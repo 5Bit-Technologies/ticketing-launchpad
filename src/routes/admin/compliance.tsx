@@ -50,7 +50,7 @@ function Compliance() {
           .gte("created_at", range.from.toISOString())
           .limit(2000),
         supabase.from("ticket_messages")
-          .select("id,ticket_id,body,created_at,user_id,is_ai")
+          .select("id,ticket_id,message,created_at,user_id")
           .gte("created_at", range.from.toISOString())
           .limit(2000),
       ]);
@@ -61,14 +61,14 @@ function Compliance() {
       const ticketById = new Map((ts ?? []).map((t: any) => [t.id, t]));
       const f: BiasFinding[] = [];
       (msgs ?? []).forEach((m: any) => {
-        if (!m.body) return;
-        const text = String(m.body).toLowerCase();
+        if (!m.message) return;
+        const text = String(m.message).toLowerCase();
         const hits = BIAS_TERMS.filter((t) => text.includes(t));
         if (hits.length) {
           const tk = ticketById.get(m.ticket_id) as any;
           f.push({
             ticketId: m.ticket_id,
-            excerpt: String(m.body).slice(0, 160) + (m.body.length > 160 ? "…" : ""),
+            excerpt: String(m.message).slice(0, 160) + (m.message.length > 160 ? "…" : ""),
             terms: hits,
             createdAt: m.created_at,
             category: tk?.category ?? "—",
