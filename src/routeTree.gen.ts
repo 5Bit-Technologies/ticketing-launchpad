@@ -22,6 +22,7 @@ import { Route as AdminTicketsRouteImport } from './routes/admin/tickets'
 import { Route as AdminStaffPerformanceRouteImport } from './routes/admin/staff-performance'
 import { Route as AdminReportsRouteImport } from './routes/admin/reports'
 import { Route as AdminPredictionsRouteImport } from './routes/admin/predictions'
+import { Route as AdminComplianceRouteImport } from './routes/admin/compliance'
 import { Route as StaffTicketIdRouteImport } from './routes/staff/ticket.$id'
 import { Route as PortalTicketIdRouteImport } from './routes/portal/ticket.$id'
 import { Route as AdminTicketIdRouteImport } from './routes/admin/ticket.$id'
@@ -91,6 +92,11 @@ const AdminPredictionsRoute = AdminPredictionsRouteImport.update({
   path: '/admin/predictions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminComplianceRoute = AdminComplianceRouteImport.update({
+  id: '/admin/compliance',
+  path: '/admin/compliance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StaffTicketIdRoute = StaffTicketIdRouteImport.update({
   id: '/staff/ticket/$id',
   path: '/staff/ticket/$id',
@@ -110,6 +116,7 @@ const AdminTicketIdRoute = AdminTicketIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/admin/compliance': typeof AdminComplianceRoute
   '/admin/predictions': typeof AdminPredictionsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/staff-performance': typeof AdminStaffPerformanceRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/admin/compliance': typeof AdminComplianceRoute
   '/admin/predictions': typeof AdminPredictionsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/staff-performance': typeof AdminStaffPerformanceRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/admin/compliance': typeof AdminComplianceRoute
   '/admin/predictions': typeof AdminPredictionsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/staff-performance': typeof AdminStaffPerformanceRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/admin/compliance'
     | '/admin/predictions'
     | '/admin/reports'
     | '/admin/staff-performance'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/admin/compliance'
     | '/admin/predictions'
     | '/admin/reports'
     | '/admin/staff-performance'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/auth'
+    | '/admin/compliance'
     | '/admin/predictions'
     | '/admin/reports'
     | '/admin/staff-performance'
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  AdminComplianceRoute: typeof AdminComplianceRoute
   AdminPredictionsRoute: typeof AdminPredictionsRoute
   AdminReportsRoute: typeof AdminReportsRoute
   AdminStaffPerformanceRoute: typeof AdminStaffPerformanceRoute
@@ -331,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPredictionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/compliance': {
+      id: '/admin/compliance'
+      path: '/admin/compliance'
+      fullPath: '/admin/compliance'
+      preLoaderRoute: typeof AdminComplianceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staff/ticket/$id': {
       id: '/staff/ticket/$id'
       path: '/staff/ticket/$id'
@@ -358,6 +378,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  AdminComplianceRoute: AdminComplianceRoute,
   AdminPredictionsRoute: AdminPredictionsRoute,
   AdminReportsRoute: AdminReportsRoute,
   AdminStaffPerformanceRoute: AdminStaffPerformanceRoute,
