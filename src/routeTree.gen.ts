@@ -9,38 +9,231 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StaffIndexRouteImport } from './routes/staff/index'
+import { Route as PortalIndexRouteImport } from './routes/portal/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as StaffTicketsRouteImport } from './routes/staff/tickets'
+import { Route as StaffNewRouteImport } from './routes/staff/new'
+import { Route as PortalNewRouteImport } from './routes/portal/new'
+import { Route as AdminUsersRouteImport } from './routes/admin/users'
+import { Route as AdminTicketsRouteImport } from './routes/admin/tickets'
+import { Route as AdminStaffPerformanceRouteImport } from './routes/admin/staff-performance'
+import { Route as AdminReportsRouteImport } from './routes/admin/reports'
+import { Route as StaffTicketIdRouteImport } from './routes/staff/ticket.$id'
+import { Route as PortalTicketIdRouteImport } from './routes/portal/ticket.$id'
+import { Route as AdminTicketIdRouteImport } from './routes/admin/ticket.$id'
 
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffIndexRoute = StaffIndexRouteImport.update({
+  id: '/staff/',
+  path: '/staff/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalIndexRoute = PortalIndexRouteImport.update({
+  id: '/portal/',
+  path: '/portal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffTicketsRoute = StaffTicketsRouteImport.update({
+  id: '/staff/tickets',
+  path: '/staff/tickets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffNewRoute = StaffNewRouteImport.update({
+  id: '/staff/new',
+  path: '/staff/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalNewRoute = PortalNewRouteImport.update({
+  id: '/portal/new',
+  path: '/portal/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminTicketsRoute = AdminTicketsRouteImport.update({
+  id: '/admin/tickets',
+  path: '/admin/tickets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminStaffPerformanceRoute = AdminStaffPerformanceRouteImport.update({
+  id: '/admin/staff-performance',
+  path: '/admin/staff-performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/admin/reports',
+  path: '/admin/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffTicketIdRoute = StaffTicketIdRouteImport.update({
+  id: '/staff/ticket/$id',
+  path: '/staff/ticket/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalTicketIdRoute = PortalTicketIdRouteImport.update({
+  id: '/portal/ticket/$id',
+  path: '/portal/ticket/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminTicketIdRoute = AdminTicketIdRouteImport.update({
+  id: '/admin/ticket/$id',
+  path: '/admin/ticket/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/staff-performance': typeof AdminStaffPerformanceRoute
+  '/admin/tickets': typeof AdminTicketsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/portal/new': typeof PortalNewRoute
+  '/staff/new': typeof StaffNewRoute
+  '/staff/tickets': typeof StaffTicketsRoute
+  '/admin/': typeof AdminIndexRoute
+  '/portal/': typeof PortalIndexRoute
+  '/staff/': typeof StaffIndexRoute
+  '/admin/ticket/$id': typeof AdminTicketIdRoute
+  '/portal/ticket/$id': typeof PortalTicketIdRoute
+  '/staff/ticket/$id': typeof StaffTicketIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/staff-performance': typeof AdminStaffPerformanceRoute
+  '/admin/tickets': typeof AdminTicketsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/portal/new': typeof PortalNewRoute
+  '/staff/new': typeof StaffNewRoute
+  '/staff/tickets': typeof StaffTicketsRoute
+  '/admin': typeof AdminIndexRoute
+  '/portal': typeof PortalIndexRoute
+  '/staff': typeof StaffIndexRoute
+  '/admin/ticket/$id': typeof AdminTicketIdRoute
+  '/portal/ticket/$id': typeof PortalTicketIdRoute
+  '/staff/ticket/$id': typeof StaffTicketIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/staff-performance': typeof AdminStaffPerformanceRoute
+  '/admin/tickets': typeof AdminTicketsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/portal/new': typeof PortalNewRoute
+  '/staff/new': typeof StaffNewRoute
+  '/staff/tickets': typeof StaffTicketsRoute
+  '/admin/': typeof AdminIndexRoute
+  '/portal/': typeof PortalIndexRoute
+  '/staff/': typeof StaffIndexRoute
+  '/admin/ticket/$id': typeof AdminTicketIdRoute
+  '/portal/ticket/$id': typeof PortalTicketIdRoute
+  '/staff/ticket/$id': typeof StaffTicketIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/admin/reports'
+    | '/admin/staff-performance'
+    | '/admin/tickets'
+    | '/admin/users'
+    | '/portal/new'
+    | '/staff/new'
+    | '/staff/tickets'
+    | '/admin/'
+    | '/portal/'
+    | '/staff/'
+    | '/admin/ticket/$id'
+    | '/portal/ticket/$id'
+    | '/staff/ticket/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/admin/reports'
+    | '/admin/staff-performance'
+    | '/admin/tickets'
+    | '/admin/users'
+    | '/portal/new'
+    | '/staff/new'
+    | '/staff/tickets'
+    | '/admin'
+    | '/portal'
+    | '/staff'
+    | '/admin/ticket/$id'
+    | '/portal/ticket/$id'
+    | '/staff/ticket/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/admin/reports'
+    | '/admin/staff-performance'
+    | '/admin/tickets'
+    | '/admin/users'
+    | '/portal/new'
+    | '/staff/new'
+    | '/staff/tickets'
+    | '/admin/'
+    | '/portal/'
+    | '/staff/'
+    | '/admin/ticket/$id'
+    | '/portal/ticket/$id'
+    | '/staff/ticket/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminStaffPerformanceRoute: typeof AdminStaffPerformanceRoute
+  AdminTicketsRoute: typeof AdminTicketsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  PortalNewRoute: typeof PortalNewRoute
+  StaffNewRoute: typeof StaffNewRoute
+  StaffTicketsRoute: typeof StaffTicketsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  PortalIndexRoute: typeof PortalIndexRoute
+  StaffIndexRoute: typeof StaffIndexRoute
+  AdminTicketIdRoute: typeof AdminTicketIdRoute
+  PortalTicketIdRoute: typeof PortalTicketIdRoute
+  StaffTicketIdRoute: typeof StaffTicketIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +241,116 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff/': {
+      id: '/staff/'
+      path: '/staff'
+      fullPath: '/staff/'
+      preLoaderRoute: typeof StaffIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/': {
+      id: '/portal/'
+      path: '/portal'
+      fullPath: '/portal/'
+      preLoaderRoute: typeof PortalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/tickets': {
+      id: '/staff/tickets'
+      path: '/staff/tickets'
+      fullPath: '/staff/tickets'
+      preLoaderRoute: typeof StaffTicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/new': {
+      id: '/staff/new'
+      path: '/staff/new'
+      fullPath: '/staff/new'
+      preLoaderRoute: typeof StaffNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/new': {
+      id: '/portal/new'
+      path: '/portal/new'
+      fullPath: '/portal/new'
+      preLoaderRoute: typeof PortalNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/tickets': {
+      id: '/admin/tickets'
+      path: '/admin/tickets'
+      fullPath: '/admin/tickets'
+      preLoaderRoute: typeof AdminTicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/staff-performance': {
+      id: '/admin/staff-performance'
+      path: '/admin/staff-performance'
+      fullPath: '/admin/staff-performance'
+      preLoaderRoute: typeof AdminStaffPerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/admin/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/ticket/$id': {
+      id: '/staff/ticket/$id'
+      path: '/staff/ticket/$id'
+      fullPath: '/staff/ticket/$id'
+      preLoaderRoute: typeof StaffTicketIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/ticket/$id': {
+      id: '/portal/ticket/$id'
+      path: '/portal/ticket/$id'
+      fullPath: '/portal/ticket/$id'
+      preLoaderRoute: typeof PortalTicketIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/ticket/$id': {
+      id: '/admin/ticket/$id'
+      path: '/admin/ticket/$id'
+      fullPath: '/admin/ticket/$id'
+      preLoaderRoute: typeof AdminTicketIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminStaffPerformanceRoute: AdminStaffPerformanceRoute,
+  AdminTicketsRoute: AdminTicketsRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  PortalNewRoute: PortalNewRoute,
+  StaffNewRoute: StaffNewRoute,
+  StaffTicketsRoute: StaffTicketsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  PortalIndexRoute: PortalIndexRoute,
+  StaffIndexRoute: StaffIndexRoute,
+  AdminTicketIdRoute: AdminTicketIdRoute,
+  PortalTicketIdRoute: PortalTicketIdRoute,
+  StaffTicketIdRoute: StaffTicketIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
